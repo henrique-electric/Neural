@@ -3,6 +3,7 @@
 #include <cmath>
 #include <numbers>
 #include <iostream>
+#include <random>
 
 namespace Constants {
     const double euler = 2.718281828459045f;
@@ -18,7 +19,7 @@ class NN
     
     
 private:
-    Eigen::VectorX<double> inputs;
+    Eigen::VectorXd inputs;
     Eigen::VectorX<Layer> layers;
     
 public:
