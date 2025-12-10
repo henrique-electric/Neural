@@ -2,7 +2,6 @@
 
 double NN::Sigmoid(double x) {
     double denominator = 1 + pow(Constants::euler, -x);
-    std::cout << 1/denominator << std::endl;
     return 1/denominator;
 }
 
