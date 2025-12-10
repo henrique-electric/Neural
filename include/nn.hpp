@@ -24,6 +24,7 @@ private:
     
 public:
     static double Sigmoid(double x);
+    static void activation(Eigen::VectorXd &linearOutput);
     
     void forward();
 

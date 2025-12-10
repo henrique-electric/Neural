@@ -4,10 +4,6 @@ static std::random_device rd;
 static std::mt19937 gen(rd());
 static std::uniform_real_distribution<> distr(-5, 5);
 
-double NN::Sigmoid(double x) {
-    double denominator = 1 + pow(Constants::euler, -x);
-    return 1/denominator;
-}
 
 static void fillMatrix(Eigen::MatrixXd &matrix, int rows, int columns) {
     for (int i=0; i < rows; i++) {
@@ -31,10 +27,12 @@ NN::NN(int layers, int neuronsPerLayer){
        
 }
 
+// TODO
 void NN::forward() {
     Eigen::VectorXd linearOutput;
-    std::cout << this->layers(0).weights;
+    //std::cout << this->layers(0).weights;
     //std::cout << "\n\n\n";
-    //std::cout << this->layers(0).weights * this->inputs;
     
+    Eigen::VectorXd ws = this->layers(0).weights * this->inputs;
+    this->activation(ws);
 }
