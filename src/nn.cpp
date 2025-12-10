@@ -79,9 +79,6 @@ NN::NN(int layers, int neuronsPerLayer, int inputSize, int outputSize) {
         }
     }
     // ===========================================================================================================
-    
-    std::cout << this->layers(2).neurons(3).weights;
-       
 }
 
 // TODO
