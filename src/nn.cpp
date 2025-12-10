@@ -108,8 +108,7 @@ void NN::forward() {
     Layer &firstLayer = this->layers(0);
     for (int neuron=0; neuron < firstLayer.neurons.size(); neuron++) {
         double dotRes = firstLayer.neurons(neuron).weights.dot(firstLayer.input);
-        double output = Sigmoid(dotRes);
-        firstLayer.output(neuron) = output;
+        firstLayer.output(neuron) = Sigmoid(dotRes);
     }
 
     
