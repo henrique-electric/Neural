@@ -16,6 +16,7 @@ void NN::ComputeLayer(Layer &layer, Eigen::VectorXd input) {
     
 }
 
+// Marked to remove
 void NN::activation(Eigen::VectorXd &linearOutput) {
     for (auto &value : linearOutput) {
         value = NN::Sigmoid(value);
