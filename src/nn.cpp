@@ -74,6 +74,8 @@ NN::NN(int layers, int neuronsPerLayer, int inputSize, int outputSize) {
     
     // ============= Initialize the output layer ================
     outputLayer.neurons = Eigen::VectorX<Neuron>(outputSize);
+    outputLayer.input = Eigen::VectorXd(outputSize);
+    outputLayer.output = Eigen::VectorXd(outputSize);
     
     int lastLayerIndex = layers - 1;
     Layer lastHiddenLayer = this->layers(lastLayerIndex);
@@ -86,16 +88,11 @@ NN::NN(int layers, int neuronsPerLayer, int inputSize, int outputSize) {
         }
     }
     // =========================================================
+    
 }
 
 // TODO
 void NN::forward() {
-    
-    for (int layer=0; layer < this->layers.size(); layer++) {
-        std::cout << "Before forward outputs " << layer << "\n";
-        std::cout << this->layers(layer).output;
-        std::cout << "\n\n\n";
-    }
     
     Layer &firstLayer = this->layers(0);
     for (int neuron=0; neuron < firstLayer.neurons.size(); neuron++) {
@@ -114,8 +111,12 @@ void NN::forward() {
         }
     }
     
-    for (int layer=0; layer < this->layers.size(); layer++) {
-        std::cout << "Output of layer " << layer << " \n " << this->layers(layer).output;
-        std::cout << "\n\n";
+    int lastHiddenLayerIndex = (int) this->layers.size() - 1;
+    this->output.input = this->layers(lastHiddenLayerIndex).output;
+    
+    
+    for (int neuron=0; neuron < this->output.neurons.size(); neuron++) {
+        double dotRes = this->output.neurons(neuron).weights.dot(this->output.input);
+        this->output.output(neuron) = Sigmoid(dotRes);
     }
 }
