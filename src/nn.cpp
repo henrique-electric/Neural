@@ -90,12 +90,32 @@ NN::NN(int layers, int neuronsPerLayer, int inputSize, int outputSize) {
 
 // TODO
 void NN::forward() {
+    
+    for (int layer=0; layer < this->layers.size(); layer++) {
+        std::cout << "Before forward outputs " << layer << "\n";
+        std::cout << this->layers(layer).output;
+        std::cout << "\n\n\n";
+    }
+    
     Layer &firstLayer = this->layers(0);
     for (int neuron=0; neuron < firstLayer.neurons.size(); neuron++) {
         double dotRes = firstLayer.neurons(neuron).weights.dot(firstLayer.input);
         firstLayer.output(neuron) = Sigmoid(dotRes);
-    }
 
+    }
     
-    std::cout << firstLayer.output << '\n';
+    for (int layer=1; layer < this->layers.size(); layer++) {
+        this->layers(layer).input = this->layers(layer - 1).output;
+        Eigen::VectorXd &currentInput = this->layers(layer).input;
+        
+        for (int neuron=0; neuron < this->layers(layer).neurons.size(); neuron++) {
+            double dotRes = this->layers(layer).neurons(neuron).weights.dot(currentInput);
+            this->layers(layer).output(neuron) = Sigmoid(dotRes);
+        }
+    }
+    
+    for (int layer=0; layer < this->layers.size(); layer++) {
+        std::cout << "Output of layer " << layer << " \n " << this->layers(layer).output;
+        std::cout << "\n\n";
+    }
 }
