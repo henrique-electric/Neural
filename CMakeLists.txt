@@ -6,7 +6,9 @@ project("NN" CXX)
 
 find_package(eigen3 CONFIG REQUIRED)
 
-include_directories(./include)
+include_directories(./include vcpkg_installed/arm64-osx/include/)
 
-add_executable(Main src/main.cpp src/nn.cpp)
-target_link_libraries(Main PRIVATE Eigen3::Eigen)
+add_library(NN STATIC src/nn.cpp src/functions.cpp)
+
+add_executable(Main src/main.cpp)
+target_link_libraries(Main PRIVATE Eigen3::Eigen NN)
