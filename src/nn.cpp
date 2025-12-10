@@ -1,20 +1,5 @@
 #include <nn.hpp>
 
-void NN::fillMatrix(Eigen::MatrixXd &matrix, int rows, int columns) {
-    matrix.resize(rows, columns);
-    for (int i=0; i < rows; i++) {
-        for (int j=0; j < columns; j++) {
-            matrix(i, j) = WInit::xavierInit(this->inputs.size(), this->output.neurons.size());
-        }
-    }
-}
-
-static void fillWeigths(Eigen::VectorXd &weights, int inputSize, int outputSize) {
-    for (auto &weigth : weights) {
-        weigth = WInit::xavierInit(inputSize, outputSize);
-    }
-}
-
 NN::NN(int layers, int neuronsPerLayer, int inputSize, int outputSize) {
 
     // ========= Initialize the input vector =============
