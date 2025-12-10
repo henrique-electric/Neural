@@ -27,7 +27,7 @@ class NN
 private:
     Eigen::VectorXd inputs;
     Eigen::VectorX<Layer> layers;
-    Eigen::VectorX<Layer> output;
+    Layer output;
 
     
     void fillMatrix(Eigen::MatrixXd &matrix, int rows, int columns);
