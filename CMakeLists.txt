@@ -8,7 +8,7 @@ find_package(eigen3 CONFIG REQUIRED)
 
 include_directories(./include vcpkg_installed/arm64-osx/include/)
 
-add_library(NN STATIC src/nn.cpp src/functions.cpp src/inits.cpp)
+add_library(NN STATIC src/nn.cpp src/functions.cpp src/inits.cpp src/loss.cpp)
 
 add_executable(Main src/main.cpp)
 target_link_libraries(Main PRIVATE Eigen3::Eigen NN)
