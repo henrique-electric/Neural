@@ -29,9 +29,10 @@ private:
     Eigen::VectorXd inputs;
     Eigen::VectorX<Layer> layers;
     Layer output;
-
     
-    void fillMatrix(Eigen::MatrixXd &matrix, int rows, int columns);
+    Eigen::VectorXd trueLabels;
+    
+    void GradientCalc(void);
     
 public:
     static double Sigmoid(double x);
@@ -43,6 +44,7 @@ public:
     
     inline Eigen::VectorXd getOutputLayer(void) { return output.output; };
     inline void setInput(Eigen::VectorXd input) { inputs = input; };
+    inline void setTrueLabels(Eigen::VectorXd labels) { trueLabels = labels; };
 
     NN(int layers, int neuronsPerLayer, int inputSize, int outputSize);
 };
