@@ -15,7 +15,7 @@
 class NN
 {
     struct Neuron {
-        double output;
+        double bias;
         Eigen::VectorXd weights;
     };
     

@@ -57,7 +57,7 @@ NN::NN(int layers, int neuronsPerLayer, int inputSize, int outputSize) {
     // ===========================================================================================
     
     
-    // ================= Initialize the weights of the rest of the weigths of the other layers ===================
+    // ================= Initialize the weights of the rest of the weigths of the other layers and set the bias to 0 ===================
     for (int layer=1; layer < layers; layer++) {
         Layer &previousLayer = this->layers(layer - 1);
         Layer &currentLayer = this->layers(layer);
@@ -65,6 +65,8 @@ NN::NN(int layers, int neuronsPerLayer, int inputSize, int outputSize) {
         currentLayer.input = previousLayer.output; // Set the input of the current layer as the output of the previous one
         for (int neuron=0; neuron < neuronsPerLayer; neuron++) {
             currentLayer.neurons(neuron).weights = Eigen::VectorXd(currentLayer.input.size());
+            currentLayer.neurons(neuron).bias = 0;
+            
             for (int weight=0; weight < currentLayer.input.size(); weight++) {
                 this->layers(layer).neurons(neuron).weights(weight) = WInit::xavierInit(previousLayer.output.size(), currentLayer.output.size());
             }
@@ -106,7 +108,7 @@ void NN::forward() {
         Eigen::VectorXd &currentInput = this->layers(layer).input;
         
         for (int neuron=0; neuron < this->layers(layer).neurons.size(); neuron++) {
-            double dotRes = this->layers(layer).neurons(neuron).weights.dot(currentInput);
+            double dotRes = this->layers(layer).neurons(neuron).weights.dot(currentInput) + this->layers(layer).neurons(neuron).bias;
             this->layers(layer).output(neuron) = Sigmoid(dotRes);
         }
     }
