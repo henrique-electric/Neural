@@ -93,7 +93,7 @@ NN::NN(int layers, int neuronsPerLayer, int inputSize, int outputSize) {
     
 }
 
-// TODO
+
 void NN::forward() {
     
     Layer &firstLayer = this->layers(0);
