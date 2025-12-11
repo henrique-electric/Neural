@@ -33,7 +33,7 @@ NN::NN(int layers, int neuronsPerLayer, int inputSize, int outputSize) {
         this->layers(0).neurons(neuron).weights = Eigen::VectorXd(weightSize);
         
         for (int weight=0; weight < weightSize; weight++) {
-            this->layers(0).neurons(neuron).weights(weight) = WInit::xavierInit(inputSize, outputSize);
+            this->layers(0).neurons(neuron).weights(weight) = WInit::xavierInit(this->inputs.size(), this->layers(0).output.size());
         }
     }
     // ==========================================================
@@ -42,7 +42,7 @@ NN::NN(int layers, int neuronsPerLayer, int inputSize, int outputSize) {
     
     // ================= Initialize the input and output vectors from the rest of layers ====================
     for (int layer=1; layer < layers; layer++) {
-        Layer previousLayer = this->layers(layer-1);
+        Layer &previousLayer = this->layers(layer-1);
         this->layers(layer).input = Eigen::VectorXd(previousLayer.output.size());
         this->layers(layer).output = Eigen::VectorXd(neuronsPerLayer);
         this->layers(layer).output.setZero();
@@ -59,14 +59,14 @@ NN::NN(int layers, int neuronsPerLayer, int inputSize, int outputSize) {
     
     // ================= Initialize the weights of the rest of the weigths of the other layers ===================
     for (int layer=1; layer < layers; layer++) {
-        Layer previousLayer = this->layers(layer - 1);
+        Layer &previousLayer = this->layers(layer - 1);
         Layer &currentLayer = this->layers(layer);
         
         currentLayer.input = previousLayer.output; // Set the input of the current layer as the output of the previous one
         for (int neuron=0; neuron < neuronsPerLayer; neuron++) {
             currentLayer.neurons(neuron).weights = Eigen::VectorXd(currentLayer.input.size());
-            for (int weight=0; weight < neuronsPerLayer; weight++) {
-                this->layers(layer).neurons(neuron).weights(weight) = WInit::xavierInit(inputSize, outputSize);
+            for (int weight=0; weight < currentLayer.input.size(); weight++) {
+                this->layers(layer).neurons(neuron).weights(weight) = WInit::xavierInit(previousLayer.output.size(), currentLayer.output.size());
             }
         }
     }
@@ -78,13 +78,13 @@ NN::NN(int layers, int neuronsPerLayer, int inputSize, int outputSize) {
     outputLayer.output = Eigen::VectorXd(outputSize);
     
     int lastLayerIndex = layers - 1;
-    Layer lastHiddenLayer = this->layers(lastLayerIndex);
+    Layer &lastHiddenLayer = this->layers(lastLayerIndex);
     outputLayer.input = lastHiddenLayer.output;
     for (int neuron=0; neuron < outputSize; neuron++) {
         outputLayer.neurons(neuron).weights = Eigen::VectorXd(outputLayer.input.size());
         
         for (auto &weight : outputLayer.neurons(neuron).weights) {
-            weight = WInit::xavierInit(inputSize, outputSize);
+            weight = WInit::xavierInit(outputLayer.input.size(), outputLayer.output.size());
         }
     }
     // =========================================================
@@ -117,6 +117,7 @@ void NN::forward() {
     
     for (int neuron=0; neuron < this->output.neurons.size(); neuron++) {
         double dotRes = this->output.neurons(neuron).weights.dot(this->output.input);
-        this->output.output(neuron) = Sigmoid(dotRes);
+        this->output.output(neuron) = dotRes;
     }
+    Softmax(this->output.output);
 }
