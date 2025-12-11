@@ -37,10 +37,12 @@ public:
     static double Sigmoid(double x);
     static double reLU(double x);
     static void Softmax(Eigen::VectorXd &vec);
-    
     static void activation(Eigen::VectorXd &linearOutput);
     
     void forward();
+    
+    inline Eigen::VectorXd getOutputLayer(void) { return output.output; };
+    inline void setInput(Eigen::VectorXd input) { inputs = input; };
 
     NN(int layers, int neuronsPerLayer, int inputSize, int outputSize);
 };
