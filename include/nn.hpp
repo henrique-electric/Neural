@@ -3,6 +3,7 @@
 #include <rng.hpp>
 #include <constants.hpp>
 #include <inits.hpp>
+#include <loss.hpp>
 
 #include <Eigen/Eigen>
 #include <cmath>
@@ -35,9 +36,9 @@ private:
 public:
     static double Sigmoid(double x);
     static double reLU(double x);
+    static void Softmax(Eigen::VectorXd &vec);
     
     static void activation(Eigen::VectorXd &linearOutput);
-    static void ComputeLayer(Layer &layer, Eigen::VectorXd input);
     
     void forward();
 

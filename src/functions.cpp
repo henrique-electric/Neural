@@ -12,8 +12,14 @@ double NN::reLU(double x) {
         return x;
 }
 
-void NN::ComputeLayer(Layer &layer, Eigen::VectorXd input) {
+void NN::Softmax(Eigen::VectorXd &vec) {
+    double sum = 0;
+    for (auto &x : vec)
+        sum += pow(Constants::euler, x);
     
+    for (auto &x : vec) {
+        x = pow(Constants::euler, x) / sum;
+    }
 }
 
 // Marked to remove
