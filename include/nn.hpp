@@ -22,7 +22,7 @@ class NN
     struct Layer {
         Eigen::VectorXd output;
         Eigen::VectorXd input;
-        Eigen::VectorX<Neuron> neurons;
+        Eigen::MatrixXd weights;
     };
     
 private:
