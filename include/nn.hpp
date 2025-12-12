@@ -32,7 +32,7 @@ private:
     
     Eigen::VectorXd trueLabels;
     
-    void GradientCalc(void);
+
     
 public:
     static double Sigmoid(double x);
@@ -40,6 +40,7 @@ public:
     static void Softmax(Eigen::VectorXd &vec);
     static void activation(Eigen::VectorXd &linearOutput);
     
+    void GradientCalc(void);
     void forward();
     
     inline Eigen::VectorXd getOutputLayer(void) { return output.output; };
