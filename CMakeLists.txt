@@ -12,3 +12,5 @@ add_library(NN STATIC src/nn.cpp src/functions.cpp src/inits.cpp src/loss.cpp)
 
 add_executable(Main src/main.cpp)
 target_link_libraries(Main PRIVATE Eigen3::Eigen NN)
+
+add_custom_target(run COMMAND $<TARGET_FILE:Main> DEPENDS Main WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
