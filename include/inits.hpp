@@ -3,4 +3,5 @@
 
 namespace WInit {
     double xavierInit(long numInputs, long numOutputs);
+    double HeUniformInit(long numInputs);
 }
