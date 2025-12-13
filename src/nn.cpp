@@ -95,11 +95,6 @@ void NN::forward() {
         for (auto &out : currentLayer.output) 
             out = Sigmoid(out);
     }
-
-    for (int layer = 0; layer < this->layers.size(); layer++) {
-        std::cout << "weights of layer: " << layer << '\n';
-        std::cout << this->layers(layer).weights << "\n\n";
-    }
     
     /*
     int lastHiddenLayerIndex = (int) this->layers.size() - 1;
@@ -113,3 +108,14 @@ void NN::forward() {
     Softmax(this->output.output);
     */
 }
+
+
+#ifdef COMPILE_UTILS
+void NN::printLayerWeights(void) {
+    for (int layer=0; layer < this->layers.size(); layer++) {
+        std::cout << "Weights from layer " << layer << '\n';
+        std::cout << this->layers(layer).weights << "\n\n";
+    }
+}
+
+#endif

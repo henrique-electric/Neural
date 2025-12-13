@@ -1,4 +1,5 @@
 #pragma once
+#define COMPILE_UTILS
 
 #include <rng.hpp>
 #include <constants.hpp>
@@ -46,6 +47,12 @@ public:
     inline Eigen::VectorXd getOutputLayer(void) { return output.output; };
     inline void setInput(Eigen::VectorXd input) { inputs = input; };
     inline void setTrueLabels(Eigen::VectorXd labels) { trueLabels = labels; };
+    inline int  getLayersNumber(void) { layers.size(); };
+
+
+#ifdef COMPILE_UTILS
+    void printLayerWeights(void);
+#endif
 
     NN(int layers, int neuronsPerLayer, int inputSize, int outputSize);
 };
