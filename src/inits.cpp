@@ -8,3 +8,9 @@ double WInit::xavierInit(long numInputs, long numOutputs) {
     
     return rng.rand();
 }
+
+double WInit::HeUniformInit(long numImputs) {
+    double heRes = sqrt(6/numImputs);
+    RNG::RNG rng(-heRes, heRes);
+    return rng.rand();
+}
