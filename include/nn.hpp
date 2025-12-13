@@ -1,5 +1,4 @@
 #pragma once
-#define COMPILE_UTILS
 
 #include <rng.hpp>
 #include <constants.hpp>
@@ -23,7 +22,7 @@ class NN
     struct Layer {
         Eigen::VectorXd output;
         Eigen::VectorXd input;
-        Eigen::MatrixXd weights;
+        Eigen::VectorX<Neuron> neurons;
     };
     
 private:
@@ -33,7 +32,7 @@ private:
     
     Eigen::VectorXd trueLabels;
     
-
+    void GradientCalc(void);
     
 public:
     static double Sigmoid(double x);
@@ -41,18 +40,11 @@ public:
     static void Softmax(Eigen::VectorXd &vec);
     static void activation(Eigen::VectorXd &linearOutput);
     
-    void GradientCalc(void);
     void forward();
     
     inline Eigen::VectorXd getOutputLayer(void) { return output.output; };
     inline void setInput(Eigen::VectorXd input) { inputs = input; };
     inline void setTrueLabels(Eigen::VectorXd labels) { trueLabels = labels; };
-    inline int  getLayersNumber(void) { layers.size(); };
-
-
-#ifdef COMPILE_UTILS
-    void printLayerWeights(void);
-#endif
 
     NN(int layers, int neuronsPerLayer, int inputSize, int outputSize);
 };
