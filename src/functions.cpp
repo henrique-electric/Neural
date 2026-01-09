@@ -3,7 +3,8 @@
 
 double NN::Sigmoid(double x) {
     double denominator = 1 + pow(Constants::euler, -x);
-    return 1/denominator;
+    double res = 1/denominator;
+    return res;
 }
 
 double NN::reLU(double x) {
