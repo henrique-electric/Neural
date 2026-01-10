@@ -4,14 +4,14 @@ set(CMAKE_CXX_STANDARD 23)
 project("NN" CXX)
 
 if (LINUX)
-    set(VCPKG_PACKAGE_INCLUDE vcpkg_installed/x64-linux/)
+    set(VCPKG_PACKAGE_INCLUDE vcpkg_installed/x64-linux/include/)
 elseif(APPLE)
-    set(VCPKG_PACKAGE_INCLUDE vcpkg_installed/arm64-osx/)
+    set(VCPKG_PACKAGE_INCLUDE vcpkg_installed/arm64-osx/include/)
 endif()
 
 find_package(Eigen3 CONFIG REQUIRED)
 
-include_directories(./include ${VCPKG_PACKAGE_INCLUDE})
+include_directories(./include ${VCPKG_PACKAGE_INCLUDE}/eigen3)
 
 add_library(NN STATIC src/nn.cpp src/functions.cpp src/inits.cpp src/loss.cpp)
 
