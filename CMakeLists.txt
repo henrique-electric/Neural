@@ -11,7 +11,7 @@ endif()
 
 find_package(Eigen3 CONFIG REQUIRED)
 
-include_directories(./include ${VCPKG_PACKAGE_INCLUDE})
+include_directories(./include ${VCPKG_PACKAGE_INCLUDE}/include/)
 
 add_library(NN STATIC src/nn.cpp src/functions.cpp src/inits.cpp src/loss.cpp)
 
