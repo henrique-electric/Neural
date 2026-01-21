@@ -2,3 +2,4 @@ build
 vcpkg_installed
 src/main.cpp
 test
+.cache
