@@ -1,0 +1,32 @@
+[
+{
+  "directory": "/home/baiano/Codes/Neural/build",
+  "command": "/usr/bin/c++  -I/home/baiano/Codes/Neural/./include -I/home/baiano/Codes/Neural/vcpkg_installed/x64-linux/include/eigen3 -std=gnu++23 -o CMakeFiles/NN.dir/src/nn.cpp.o -c /home/baiano/Codes/Neural/src/nn.cpp",
+  "file": "/home/baiano/Codes/Neural/src/nn.cpp",
+  "output": "CMakeFiles/NN.dir/src/nn.cpp.o"
+},
+{
+  "directory": "/home/baiano/Codes/Neural/build",
+  "command": "/usr/bin/c++  -I/home/baiano/Codes/Neural/./include -I/home/baiano/Codes/Neural/vcpkg_installed/x64-linux/include/eigen3 -std=gnu++23 -o CMakeFiles/NN.dir/src/functions.cpp.o -c /home/baiano/Codes/Neural/src/functions.cpp",
+  "file": "/home/baiano/Codes/Neural/src/functions.cpp",
+  "output": "CMakeFiles/NN.dir/src/functions.cpp.o"
+},
+{
+  "directory": "/home/baiano/Codes/Neural/build",
+  "command": "/usr/bin/c++  -I/home/baiano/Codes/Neural/./include -I/home/baiano/Codes/Neural/vcpkg_installed/x64-linux/include/eigen3 -std=gnu++23 -o CMakeFiles/NN.dir/src/inits.cpp.o -c /home/baiano/Codes/Neural/src/inits.cpp",
+  "file": "/home/baiano/Codes/Neural/src/inits.cpp",
+  "output": "CMakeFiles/NN.dir/src/inits.cpp.o"
+},
+{
+  "directory": "/home/baiano/Codes/Neural/build",
+  "command": "/usr/bin/c++  -I/home/baiano/Codes/Neural/./include -I/home/baiano/Codes/Neural/vcpkg_installed/x64-linux/include/eigen3 -std=gnu++23 -o CMakeFiles/NN.dir/src/loss.cpp.o -c /home/baiano/Codes/Neural/src/loss.cpp",
+  "file": "/home/baiano/Codes/Neural/src/loss.cpp",
+  "output": "CMakeFiles/NN.dir/src/loss.cpp.o"
+},
+{
+  "directory": "/home/baiano/Codes/Neural/build",
+  "command": "/usr/bin/c++  -I/home/baiano/Codes/Neural/./include -I/home/baiano/Codes/Neural/vcpkg_installed/x64-linux/include/eigen3 -isystem /home/baiano/vcpkg/buildtrees/eigen3/src/3.4.1-0ff0cf177d.clean -std=gnu++23 -o CMakeFiles/Main.dir/src/main.cpp.o -c /home/baiano/Codes/Neural/src/main.cpp",
+  "file": "/home/baiano/Codes/Neural/src/main.cpp",
+  "output": "CMakeFiles/Main.dir/src/main.cpp.o"
+}
+]
