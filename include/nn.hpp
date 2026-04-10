@@ -15,11 +15,13 @@
 
 class NN
 {
+    // Defines what is a neuron inside the network.
     struct Neuron {
         double bias;
         Eigen::VectorXd weights;
     };
     
+    // Defines what is a layer inside the network.
     struct Layer {
         Eigen::VectorXd output;
         Eigen::VectorXd input;
@@ -27,9 +29,9 @@ class NN
     };
     
 private:
-    Eigen::VectorXd inputs;
-    Eigen::VectorX<Layer> layers;
-    Layer output;
+    Eigen::VectorXd inputs;         // The input layer.
+    Eigen::VectorX<Layer> layers;   // Where the hidden layers lives in.
+    Layer output;                   // The output layer
     
     Eigen::VectorXd trueLabels;
     
@@ -52,6 +54,7 @@ public:
 
 #ifdef COMPILE_UTILS
     void printLayerWeights(void);
+    void printLayerOutputs(void);
 #endif
 
     NN(int layers, int neuronsPerLayer, int inputSize, int outputSize);
