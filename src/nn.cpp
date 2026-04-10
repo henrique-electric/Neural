@@ -91,7 +91,7 @@ void NN::forward() {
     for (int layer=1; layer < this->layers.size(); layer++) {
         Layer &currentLayer = this->layers(layer);
 
-        currentLayer.output = currentLayer.weights * currentLayer.input;
+		currentLayer.output = currentLayer.weights * currentLayer.input;        // The output layer will be the weighted sum of the input and the weights of the current layer,
         for (auto &out : currentLayer.output)
             out = Sigmoid(out);
     }
@@ -118,4 +118,10 @@ void NN::printLayerWeights(void) {
     }
 }
 
+void NN::printLayerOutputs(void) {
+    for (int layer = 0; layer < this->layers.size(); layer++) {
+        std::cout << "Output from layer " << layer << '\n';
+        std::cout << this->layers(layer).output << "\n";
+    }
+}
 #endif
