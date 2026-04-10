@@ -11,7 +11,11 @@
 #include <numbers>
 #include <iostream>
 
-
+enum OutputTypes {
+    PROBABILITY_DISTRIBUTION,
+	CLASS,
+    SINGLE_VALUE,
+};
 
 class NN
 {
