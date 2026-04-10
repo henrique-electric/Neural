@@ -2,6 +2,11 @@
 #include <cmath>
 #include <iostream>
 
+/*
+	This file stores init functions for the weights and biases of the neural network. The init functions implemented here include Xavier 
+    initialization and He uniform initialization.
+*/
+
 double WInit::xavierInit(long numInputs, long numOutputs) {
     double xavierRes = sqrt(6.0/(numInputs + numOutputs));
     RNG::RNG rng(-xavierRes, xavierRes);

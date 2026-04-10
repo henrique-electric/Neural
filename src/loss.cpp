@@ -3,6 +3,15 @@
 #include <constants.hpp>
 
 
+/*
+	This file stores some loss functions and their derivatives that are used in the backpropagation process of the neural network. The loss functions 
+    implemented here include the square loss, mean square loss, and cross-entropy loss. Each loss function 
+    has a corresponding derivative function that calculates the gradient of the loss with respect to the predicted output, which is needed 
+    for updating the weights and biases during training. The SigmoidDerivative function computes the derivative of the sigmoid activation function, 
+    which is commonly used in neural networks. The WeightedSumDerivated function is a placeholder for calculating the derivative 
+    of a weighted sum, which can be useful in certain architectures or custom layers.
+*/
+
 using namespace Constants;
 
 static double Sigmoid(double x) {
