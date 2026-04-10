@@ -4,10 +4,10 @@ set(CMAKE_CXX_STANDARD 23)
 
 project("NN" CXX)
 
-find_package(eigen3 CONFIG REQUIRED)
+find_package(Eigen3 CONFIG REQUIRED)
 find_package(GTest CONFIG REQUIRED)
 
-include_directories(./include vcpkg_installed/arm64-osx/include/)
+include_directories(./include vcpkg_installed/arm64-osx/include/ vcpkg_installed/x64-windows/include/)
 
 add_library(NN STATIC src/nn.cpp src/functions.cpp src/inits.cpp src/loss.cpp)
 
