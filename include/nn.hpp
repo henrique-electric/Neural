@@ -59,6 +59,7 @@ public:
 #ifdef COMPILE_UTILS
     void printLayerWeights(void);
     void printLayerOutputs(void);
+    void printLayerInputs(void);
 #endif
 
     NN(int layers, int neuronsPerLayer, int inputSize, int outputSize);

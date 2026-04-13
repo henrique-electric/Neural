@@ -7,7 +7,6 @@
         columns = Represents a single neuron from the current layer
 
 */
-
 NN::NN(int layers, int neuronsPerLayer, int inputSize, int outputSize) {
 
     // ========= Initialize the input vector =============
@@ -128,6 +127,13 @@ void NN::printLayerOutputs(void) {
     for (int layer = 0; layer < this->layers.size(); layer++) {
         std::cout << "Output from layer " << layer << '\n';
         std::cout << this->layers(layer).output << "\n";
+    }
+}
+
+void NN::printLayerInputs(void) {
+    for (int layer = 0; layer < this->layers.size(); layer++) {
+        std::cout << "Input from layer " << layer << '\n';
+        std::cout << this->layers(layer).input << "\n";
     }
 }
 #endif
