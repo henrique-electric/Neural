@@ -31,7 +31,7 @@ void NN::GradientCalc(void) {
     int outputLayerSize = (int) outputLayer.output.size();
 
     for (int output=0; output < outputLayerSize; output++) {
-        double chageToA = Loss::SquareLossDerivative(outputLayer.output(output), this->trueLabels(output));
+        double chageToA = LossDerivatives::SquareLossDerivative(outputLayer.output(output), this->trueLabels(output));
         std::cout << chageToA;
     }
 
