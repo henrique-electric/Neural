@@ -21,26 +21,10 @@ static double Sigmoid(double x) {
 
 namespace LossDerivatives {
 
-    double MeanSquareLossDerivative(Eigen::VectorXd& input, Eigen::VectorXd& expected) {
-        double sum = 0;
-        for (int i = 0; i < input.size(); i++) {
-            sum += 2 * (input(i) - expected(i));
-        }
-
-        return sum;
-    }
-
     double SquareLossDerivative(double result, double expected) {
         return 2 * (result - expected);
     }
 
-    double SigmoidDerivative(double x) {
-        return Sigmoid(x) * (1 - Sigmoid(x));
-    }
-
-    double WeightedSumDerivated(double x) {
-        return x;   // return x itself since d/dw W * a + b = W
-    }
 
 }
 

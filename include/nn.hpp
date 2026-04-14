@@ -5,6 +5,8 @@
 #include <constants.hpp>
 #include <inits.hpp>
 #include <loss.hpp>
+#include <activations.hpp>
+
 
 #include <Eigen/Eigen>
 #include <cmath>
@@ -15,6 +17,17 @@ enum OutputTypes {
     PROBABILITY_DISTRIBUTION,
 	CLASS,
     SINGLE_VALUE,
+};
+
+
+// LRELU = Leaky ReLU
+enum ActivationFunction {
+    SIGMOID,
+    RELU,
+    LRELU,
+    SOFT_PLUS,
+    ELU,
+    SOFTMAX
 };
 
 class NN
@@ -42,10 +55,6 @@ private:
 
     
 public:
-    static double Sigmoid(double x);
-    static double reLU(double x);
-    static void Softmax(Eigen::VectorXd &vec);
-    static void activation(Eigen::VectorXd &linearOutput);
     
     void GradientCalc(void);
     void forward();

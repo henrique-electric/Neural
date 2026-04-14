@@ -83,7 +83,7 @@ void NN::forward() {
     firstLayer.output = firstLayer.weights * this->inputs;
 
     for (auto &out : firstLayer.output)
-        out = Sigmoid(out);
+        out = ActivationFunctions::sigmoid(out);
     //============================================================================
 
     
@@ -98,7 +98,7 @@ void NN::forward() {
 		currentLayer.output = currentLayer.weights * currentLayer.input;        
 
         for (auto &out : currentLayer.output)
-            out = Sigmoid(out);
+            out = ActivationFunctions::sigmoid(out);
     }
     
     /*
