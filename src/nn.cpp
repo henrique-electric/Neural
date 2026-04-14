@@ -4,10 +4,13 @@
 /*
     Base shape of weights:
         rows = How many weights from previous layer connected to one neuron of the current layer
-        columns = Represents a single neuron from the current layer
+        column = Represents a single neuron from the current layer
 
 */
 NN::NN(int layers, int neuronsPerLayer, int inputSize, int outputSize) {
+
+    this->numLayers = layers;
+    this->numNeuronsPerLayer = neuronsPerLayer;
 
     // ========= Initialize the input vector =============
     this->inputs = Eigen::VectorXd(inputSize);

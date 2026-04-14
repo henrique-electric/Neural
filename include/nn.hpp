@@ -46,18 +46,22 @@ class NN
     };
     
 private:
+    int numLayers;
+    int numNeuronsPerLayer;
+
     Eigen::VectorXd inputs;         // The input layer.
     Eigen::VectorX<Layer> layers;   // Where the hidden layers lives in.
     Layer output;                   // The output layer
     
     Eigen::VectorXd trueLabels;
     
-
+    void GradientCalc(void);
     
 public:
     
-    void GradientCalc(void);
-    void forward();
+    
+    void forward(void);
+    void backprop(void)
     
     inline Eigen::VectorXd getOutputLayer(void) { return output.output; };
     inline void setInput(Eigen::VectorXd input) { inputs = input; };
