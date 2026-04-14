@@ -21,14 +21,14 @@ enum OutputTypes {
 
 
 // LRELU = Leaky ReLU
-enum ActivationFunction {
+typedef enum ActivationFunction {
     SIGMOID,
     RELU,
     LRELU,
     SOFT_PLUS,
     ELU,
     SOFTMAX
-};
+} ActivationFunction;
 
 class NN
 {
@@ -61,7 +61,7 @@ public:
     
     
     void forward(void);
-    void backprop(void)
+    void backprop(void);
     
     inline Eigen::VectorXd getOutputLayer(void) { return output.output; };
     inline void setInput(Eigen::VectorXd input) { inputs = input; };
