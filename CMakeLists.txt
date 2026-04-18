@@ -7,7 +7,7 @@ project("NN" CXX)
 find_package(Eigen3 CONFIG REQUIRED)
 find_package(GTest CONFIG REQUIRED)
 
-include_directories(./include vcpkg_installed/arm64-osx/include/ vcpkg_installed/x64-windows/include/)
+include_directories(./include vcpkg_installed/arm64-osx/include/ vcpkg_installed/x64-windows/include/ vcpkg_installed/x64-linux/include)
 
 add_library(NN STATIC src/nn.cpp src/activations.cpp src/inits.cpp src/loss.cpp)
 
