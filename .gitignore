@@ -4,3 +4,4 @@ src/main.cpp
 test
 out
 .vs
+compile_commands.json
